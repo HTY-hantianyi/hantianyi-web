@@ -1,10 +1,10 @@
 // 直接用 fetch 调用 Supabase REST API（绕过 SDK 问题）
-const SUPABASE_URL = 'https://homyhvcmnoqpjahegdpq.supabase.co';
-const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXlodmNtbm9xcGphaGVnZHBxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTQ0NTA5NSwiZXhwIjoyMDk3MDIxMDk1fQ.xfoax1KZeUEeMUkiRcQzMmKwqf1AwCBUwMkAp9dP_Cw';
+const _SUPABASE_URL = 'https://homyhvcmnoqpjahegdpq.supabase.co';
+const _API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXlodmNtbm9xcGphaGVnZHBxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTQ0NTA5NSwiZXhwIjoyMDk3MDIxMDk1fQ.xfoax1KZeUEeMUkiRcQzMmKwqf1AwCBUwMkAp9dP_Cw';
 
 const headers = {
-    'apikey': API_KEY,
-    'Authorization': `Bearer ${API_KEY}`,
+    'apikey': _API_KEY,
+    'Authorization': `Bearer ${_API_KEY}`,
     'Content-Type': 'application/json'
 };
 
@@ -25,10 +25,10 @@ function switchTab(tabName, btn) {
 // 加载概览数据
 async function loadOverview() {
     try {
-        const products = await (await fetch(`${SUPABASE_URL}/rest/v1/products?select=id`, {headers})).json();
-        const articles = await (await fetch(`${SUPABASE_URL}/rest/v1/articles?select=id`, {headers})).json();
-        const contacts = await (await fetch(`${SUPABASE_URL}/rest/v1/contacts?select=id`, {headers})).json();
-        const unread = await (await fetch(`${SUPABASE_URL}/rest/v1/contacts?select=id&is_read=eq.false`, {headers})).json();
+        const products = await (await fetch(`${_SUPABASE_URL}/rest/v1/products?select=id`, {headers})).json();
+        const articles = await (await fetch(`${_SUPABASE_URL}/rest/v1/articles?select=id`, {headers})).json();
+        const contacts = await (await fetch(`${_SUPABASE_URL}/rest/v1/contacts?select=id`, {headers})).json();
+        const unread = await (await fetch(`${_SUPABASE_URL}/rest/v1/contacts?select=id&is_read=eq.false`, {headers})).json();
         
         document.getElementById('stat-products').textContent = products.length;
         document.getElementById('stat-articles').textContent = articles.length;
@@ -45,7 +45,7 @@ async function loadProducts() {
     grid.innerHTML = '<p style="color: #666;">加载中...</p>';
     
     try {
-        const data = await (await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&order=sort_order.asc`, {headers})).json();
+        const data = await (await fetch(`${_SUPABASE_URL}/rest/v1/products?select=*&order=sort_order.asc`, {headers})).json();
         
         if (!data || data.length === 0) {
             grid.innerHTML = '<p style="color: #666;">暂无产品，点击上方按钮添加</p>';
@@ -114,7 +114,7 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
     };
     
     try {
-        let url = `${SUPABASE_URL}/rest/v1/products`;
+        let url = `${_SUPABASE_URL}/rest/v1/products`;
         let method = 'POST';
         
         if (id) {
@@ -142,14 +142,14 @@ document.getElementById('productForm').addEventListener('submit', async (e) => {
 });
 
 async function editProduct(id) {
-    const data = await (await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${id}&select=*`, {headers})).json();
+    const data = await (await fetch(`${_SUPABASE_URL}/rest/v1/products?id=eq.${id}&select=*`, {headers})).json();
     if (data && data[0]) openProductModal(data[0]);
 }
 
 async function deleteProduct(id) {
     if (!confirm('确定要删除这个产品吗？')) return;
     
-    await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${id}`, {
+    await fetch(`${_SUPABASE_URL}/rest/v1/products?id=eq.${id}`, {
         method: 'DELETE',
         headers
     });
@@ -163,7 +163,7 @@ async function loadArticles() {
     list.innerHTML = '<p style="color: #666;">加载中...</p>';
     
     try {
-        const data = await (await fetch(`${SUPABASE_URL}/rest/v1/articles?select=*&order=created_at.desc`, {headers})).json();
+        const data = await (await fetch(`${_SUPABASE_URL}/rest/v1/articles?select=*&order=created_at.desc`, {headers})).json();
         
         if (!data || data.length === 0) {
             list.innerHTML = '<p style="color: #666;">暂无文章</p>';
@@ -216,7 +216,7 @@ document.getElementById('articleForm').addEventListener('submit', async (e) => {
     };
     
     try {
-        let url = `${SUPABASE_URL}/rest/v1/articles`;
+        let url = `${_SUPABASE_URL}/rest/v1/articles`;
         let method = 'POST';
         
         if (id) {
@@ -243,14 +243,14 @@ document.getElementById('articleForm').addEventListener('submit', async (e) => {
 });
 
 async function editArticle(id) {
-    const data = await (await fetch(`${SUPABASE_URL}/rest/v1/articles?id=eq.${id}&select=*`, {headers})).json();
+    const data = await (await fetch(`${_SUPABASE_URL}/rest/v1/articles?id=eq.${id}&select=*`, {headers})).json();
     if (data && data[0]) openArticleModal(data[0]);
 }
 
 async function deleteArticle(id) {
     if (!confirm('确定要删除这篇文章吗？')) return;
     
-    await fetch(`${SUPABASE_URL}/rest/v1/articles?id=eq.${id}`, {
+    await fetch(`${_SUPABASE_URL}/rest/v1/articles?id=eq.${id}`, {
         method: 'DELETE',
         headers
     });
@@ -264,7 +264,7 @@ async function loadContacts() {
     list.innerHTML = '<p style="color: #666;">加载中...</p>';
     
     try {
-        const data = await (await fetch(`${SUPABASE_URL}/rest/v1/contacts?select=*&order=created_at.desc`, {headers})).json();
+        const data = await (await fetch(`${_SUPABASE_URL}/rest/v1/contacts?select=*&order=created_at.desc`, {headers})).json();
         
         if (!data || data.length === 0) {
             list.innerHTML = '<p style="color: #666;">暂无留言</p>';
@@ -293,7 +293,7 @@ async function loadContacts() {
 }
 
 async function markRead(id, isRead) {
-    await fetch(`${SUPABASE_URL}/rest/v1/contacts?id=eq.${id}`, {
+    await fetch(`${_SUPABASE_URL}/rest/v1/contacts?id=eq.${id}`, {
         method: 'PATCH',
         headers,
         body: JSON.stringify({is_read: isRead})
@@ -304,7 +304,7 @@ async function markRead(id, isRead) {
 async function deleteContact(id) {
     if (!confirm('确定要删除这条留言吗？')) return;
     
-    await fetch(`${SUPABASE_URL}/rest/v1/contacts?id=eq.${id}`, {
+    await fetch(`${_SUPABASE_URL}/rest/v1/contacts?id=eq.${id}`, {
         method: 'DELETE',
         headers
     });
