@@ -1,0 +1,701 @@
+/* ==========================================
+   移动端全面优化 - 兼容iOS和Android
+   ========================================== */
+
+/* ==========================================
+   汉堡菜单按钮样式
+   ========================================== */
+.hamburger {
+    display: none; /* 默认隐藏，在移动端显示 */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* 汉堡菜单激活状态（X形状） */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ==========================================
+   移动端导航菜单样式
+   ========================================== */
+@media (max-width: 768px) {
+    /* 显示汉堡菜单按钮 */
+    .hamburger {
+        display: flex;
+        order: 3; /* 放在AI按钮后面 */
+        margin-left: 15px;
+    }
+    
+    /* 移动端导航菜单（默认隐藏） */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* 默认在屏幕外 */
+        width: 70%;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        display: flex; /* 移动端显示 */
+    }
+    
+    /* 移动端导航菜单显示 */
+    .nav-links.active {
+        right: 0;
+    }
+    
+    /* 移动端导航链接样式 */
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        font-size: 18px;
+        padding: 15px 20px;
+        display: block;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    
+    .nav-links a:hover {
+        background-color: var(--accent-color);
+    }
+    
+    /* 调整导航栏布局 */
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-actions {
+        order: 2;
+        margin-left: 0;
+    }
+}
+
+/* iOS安全区域支持（iPhone X及以上有刘海屏） */
+:root {
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+    --safe-area-inset-right: env(safe-area-inset-right);
+}
+
+/* 防止iOS缩放问题 */
+meta[name="viewport"] {
+    content: width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no;
+}
+
+/* 优化触摸体验 */
+* {
+    -webkit-tap-highlight-color: transparent; /* 移除iOS点击高亮 */
+    -webkit-touch-callout: none; /* 禁用长按菜单 */
+    touch-action: manipulation; /* 优化触摸响应 */
+}
+
+/* 允许输入框长按菜单 */
+input, textarea, select {
+    -webkit-touch-callout: default;
+}
+
+/* ==========================================
+   移动端通用优化 (max-width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 导航栏优化 */
+    .navbar {
+        padding: 0 10px;
+    }
+    
+    .navbar .container {
+        padding: 10px;
+    }
+    
+    .logo {
+        font-size: 18px !important;
+    }
+    
+    .logo i {
+        font-size: 22px !important;
+    }
+    
+    /* 隐藏桌面端菜单，显示移动端菜单按钮 */
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-actions {
+        margin-left: auto;
+    }
+    
+    .btn-chat {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+    
+    /* 首页横幅优化 */
+    .hero {
+        padding: 100px 0 40px;
+        margin-top: 60px;
+    }
+    
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .hero-content {
+        order: 2;
+    }
+    
+    .hero-image {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 28px !important;
+        line-height: 1.3;
+    }
+    
+    .subtitle {
+        font-size: 16px !important;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* 产品中心优化 */
+    .products {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 28px !important;
+    }
+    
+    .section-subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .product-card {
+        margin-bottom: 0;
+    }
+    
+    .product-image img {
+        height: 180px;
+    }
+    
+    /* 关于我们优化 */
+    .about {
+        padding: 40px 0;
+    }
+    
+    .about-content {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-image {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    
+    .about-features {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* 联系我们优化 */
+    .contact {
+        padding: 40px 0;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr !important;
+        padding: 0 15px;
+    }
+    
+    .contact-info {
+        order: 2;
+    }
+    
+    .contact-form {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    
+    .info-item {
+        padding: 20px !important;
+    }
+    
+    /* 页脚优化 */
+    .footer {
+        padding: 30px 15px !important;
+    }
+    
+    /* ==========================================
+       医法菁卫 AI 移动端优化
+       ========================================== */
+    
+    /* 整体_section优化 */
+    .yifa {
+        padding: 40px 0 !important;
+    }
+    
+    .yifa .section-title {
+        font-size: 28px !important;
+        margin-bottom: 10px;
+    }
+    
+    .yifa .section-subtitle {
+        font-size: 14px !important;
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+    
+    /* 内容区域：从左右布局改为上下布局 */
+    .yifa-content {
+        flex-direction: column !important;
+        gap: 30px !important;
+        padding: 0 15px;
+    }
+    
+    /* 文字区域优化 */
+    .yifa-text {
+        order: 1;
+        width: 100%;
+    }
+    
+    .yifa-text h3 {
+        font-size: 22px !important;
+        margin-bottom: 15px;
+    }
+    
+    .yifa-text p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 12px;
+    }
+    
+    /* 功能列表：从2列改为1列，改用flex纵向排列 */
+    .yifa-features {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        margin: 20px 0 !important;
+    }
+    
+    /* 单个功能项：图标在上、文字在下（竖向布局） */
+    .yifa-feature {
+        display: flex !important;
+        flex-direction: column !important;  /* 关键：从横向改为纵向 */
+        align-items: center !important;      /* 居中对齐 */
+        text-align: center !important;       /* 文字居中 */
+        padding: 18px 15px !important;
+        gap: 8px !important;
+    }
+    
+    .yifa-feature i {
+        font-size: 32px !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px;
+    }
+    
+    .yifa-feature h4 {
+        font-size: 16px !important;
+        margin-bottom: 6px !important;
+        font-weight: bold;
+    }
+    
+    .yifa-feature p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* 按钮区域优化 */
+    .yifa-cta {
+        flex-direction: column;
+        gap: 10px !important;
+        margin-top: 20px;
+    }
+    
+    .yifa-cta .btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+    
+    /* 图片区域优化：移动到下方，缩小尺寸 */
+    .yifa-image {
+        order: 2;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    .yifa-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    
+    /* AI对话窗口优化 - 全屏显示 */
+    .ai-chat {
+        width: 100% !important;
+        height: 100% !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        border-radius: 0 !important;
+        /* iOS安全区域 */
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .chat-header {
+        /* iOS安全区域 */
+        padding-top: calc(15px + env(safe-area-inset-top));
+    }
+    
+    /* 返回顶部按钮优化 */
+    .back-to-top {
+        bottom: 80px !important; /* 避免与AI聊天按钮重叠 */
+        left: 15px !important;
+    }
+}
+
+/* ==========================================
+   小屏手机优化 (max-width: 480px)
+   ========================================== */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 24px !important;
+    }
+    
+    .section-title {
+        font-size: 24px !important;
+    }
+    
+    .product-info h3 {
+        font-size: 18px !important;
+    }
+    
+    .price {
+        font-size: 20px !important;
+    }
+    
+    .btn-buy {
+        padding: 6px 15px !important;
+        font-size: 14px !important;
+    }
+    
+    /* ==========================================
+       医法菁卫 AI - 超小屏幕优化
+       ========================================== */
+    
+    /* 整体section优化 - 减少内边距 */
+    .yifa {
+        padding: 30px 0 !important;
+    }
+    
+    /* 标题优化 - 更小但清晰 */
+    .yifa .section-title {
+        font-size: 22px !important;
+        padding: 0 10px;
+    }
+    
+    .yifa .section-subtitle {
+        font-size: 13px !important;
+        padding: 0 10px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* 内容区域优化 - 减少左右留白 */
+    .yifa-content {
+        padding: 0 10px !important;
+        gap: 20px !important;
+    }
+    
+    /* 文字区域优化 */
+    .yifa-text h3 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .yifa-text p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* 功能列表优化 - 减少间距 */
+    .yifa-features {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        margin: 15px 0 !important;
+    }
+    
+    /* 单个功能项优化 - 纵向布局（图标在上，文字在下） */
+    .yifa-feature {
+        display: flex !important;
+        flex-direction: column !important;   /* 纵向排列 */
+        align-items: center !important;      /* 居中 */
+        text-align: center !important;       /* 文字居中 */
+        padding: 14px 12px !important;
+        gap: 6px !important;
+    }
+    
+    .yifa-feature i {
+        font-size: 28px !important;
+        min-width: auto !important;
+        margin-bottom: 4px;
+    }
+    
+    .yifa-feature h4 {
+        font-size: 15px !important;
+        margin-bottom: 4px !important;
+        line-height: 1.3;
+        font-weight: bold;
+    }
+    
+    .yifa-feature p {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        word-break: break-word;
+        margin-bottom: 0 !important;
+    }
+    
+    /* 按钮区域优化 - 更紧凑 */
+    .yifa-cta {
+        gap: 8px !important;
+        margin-top: 15px !important;
+    }
+    
+    .yifa-cta .btn {
+        padding: 10px 15px !important;
+        font-size: 14px !important;
+    }
+    
+    /* 图片优化 - 缩小 */
+    .yifa-image {
+        margin-top: 15px !important;
+    }
+    
+    .yifa-image img {
+        border-radius: 8px !important;
+    }
+    
+    /* 联系我们 - 超小屏优化 */
+    .info-item {
+        padding: 15px 12px !important;
+    }
+    
+    .info-item i {
+        font-size: 22px !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .info-item h3 {
+        font-size: 15px !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .info-item p,
+    .phone-link,
+    .address-link {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* ==========================================
+   iOS特定优化
+   ========================================== */
+
+/* 修复iOS Safari的100vh问题 */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        min-height: -webkit-fill-available;
+    }
+    
+    .ai-chat {
+        height: -webkit-fill-available;
+    }
+}
+
+/* 修复iOS输入框圆角问题 */
+@media (max-width: 768px) {
+    input, textarea, select {
+        -webkit-appearance: none;
+        border-radius: 5px;
+    }
+}
+
+/* 优化iOS滚动 */
+@supports (-webkit-overflow-scrolling: touch) {
+    .chat-messages {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ==========================================
+   Android特定优化
+   ========================================== */
+
+/* 优化Android Chrome的滚动 */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* 修复Android点击延迟 */
+    a, button, input, textarea, select {
+        touch-action: manipulation;
+    }
+}
+
+/* ==========================================
+   触摸优化 - 确保按钮大小适合触摸
+   ========================================== */
+@media (max-width: 768px) {
+    /* 最小触摸目标44x44px (Apple推荐) */
+    .btn-chat,
+    .btn-buy,
+    .btn-send,
+    .btn-close,
+    .back-to-top {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* 导航按钮优化 */
+    .btn-chat {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 产品购买按钮优化 */
+    .btn-buy {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* AI聊天发送按钮优化 */
+    .btn-send {
+        width: 44px !important;
+        height: 44px !important;
+    }
+    
+    /* 输入框优化 - 更适合触摸 */
+    .chat-input input {
+        min-height: 44px;
+        font-size: 16px !important; /* 防止iOS自动缩放 */
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        min-height: 44px;
+        font-size: 16px !important; /* 防止iOS自动缩放 */
+    }
+}
+
+/* ==========================================
+   横屏优化
+   ========================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 80px 0 30px;
+    }
+    
+    .hero h1 {
+        font-size: 24px !important;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ==========================================
+   高分辨率屏幕优化 (Retina显示屏)
+   ========================================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* 确保图片清晰 */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* ==========================================
+   暗黑模式支持 (iOS/Android)
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+    /* 如果将来要支持暗黑模式，可以在这里添加样式 */
+}
+
+/* ==========================================
+   打印优化
+   ========================================== */
+@media print {
+    .navbar,
+    .ai-chat,
+    .back-to-top,
+    .btn-chat {
+        display: none !important;
+    }
+}
