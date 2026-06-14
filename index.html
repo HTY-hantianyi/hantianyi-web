@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉天医®医学中心 - 药食同源 · 健康养生 | 昆明汉天医药业有限公司</title>
+    <meta name="description" content="汉天医®医学中心，传承中医智慧，融合现代科技。提供药食同源处方茶、穴位磁疗垫、护眼养生眼盒、九合一低聚肽等健康养生产品。咨询电话：15288197613">
+    <meta name="keywords" content="汉天医,药食同源,处方茶,磁疗垫,眼盒,特膳食品,低聚肽,中医养生,健康养生,昆明汉天医">
+    <meta name="author" content="昆明汉天医药业有限公司">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hantianyi.cn">
+    
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="汉天医®医学中心 - 药食同源 · 健康养生">
+    <meta property="og:description" content="汉天医®医学中心，传承中医智慧，融合现代科技。提供药食同源处方茶、穴位磁疗垫、护眼养生眼盒、九合一低聚肽等健康养生产品。">
+    <meta property="og:image" content="https://hantianyi.cn/images/og-image.jpg">
+    <meta property="og:url" content="https://hantianyi.cn">
+    <meta property="og:site_name" content="汉天医医学中心">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="汉天医®医学中心 - 药食同源 · 健康养生">
+    <meta name="twitter:description" content="汉天医®医学中心，传承中医智慧，融合现代科技。提供药食同源处方茶、穴位磁疗垫、护眼养生眼盒、九合一低聚肽等健康养生产品。">
+    <meta name="twitter:image" content="https://hantianyi.cn/images/og-image.jpg">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-optimize.css">
+    <link rel="stylesheet" href="product-slider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>汉天医<sup>®</sup>医学中心</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#products">产品中心</a></li>
+                <li><a href="#yifa">医法菁卫 AI</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            <!-- 汉堡菜单按钮（手机端显示） -->
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-actions">
+                <a href="https://www.doubao.com/bot/wuEVFwB4" target="_blank" class="btn-chat">
+                    <i class="fas fa-headset"></i> AI健康顾问
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>汉天医医学中心 · 药食同源</h1>
+                <p class="subtitle">传承中医智慧，融合现代科技，为您带来健康养生新体验</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">探索产品</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品中心 -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">产品中心</h2>
+            <p class="section-subtitle">精选药食同源产品，守护您的健康</p>
+            
+            <!-- 左右滑动按钮 -->
+            <div class="product-slider-wrapper">
+                <button class="slider-btn slider-btn-left" onclick="scrollProducts(-1)">‹</button>
+                <button class="slider-btn slider-btn-right" onclick="scrollProducts(1)">›</button>
+                
+                <div class="product-grid">
+                <!-- 产品1：处方茶 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/product-chacai.jpg" alt="处方茶">
+                    </div>
+                    <div class="product-info">
+                        <h3>药食同源处方茶</h3>
+                        <p>精选二十六味药材，科学配比，调理身体机能</p>
+                        <div class="product-price">
+                            <span class="price">¥298</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品2：磁疗垫 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/product-ciliaodian.jpg" alt="穴位磁疗垫">
+                    </div>
+                    <div class="product-info">
+                        <h3>穴位磁疗垫</h3>
+                        <p>远红外+磁疗双重功效，缓解疲劳，改善睡眠</p>
+                        <div class="product-price">
+                            <span class="price">¥598</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品3：眼盒 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/product-yanhe.jpg" alt="眼盒">
+                    </div>
+                    <div class="product-info">
+                        <h3>护眼养生眼盒</h3>
+                        <p>中药熏蒸+温热理疗，缓解眼疲劳，保护视力</p>
+                        <div class="product-price">
+                            <span class="price">¥198</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品4：特膳食品 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/product-teshan.jpg" alt="特膳食品">
+                    </div>
+                    <div class="product-info">
+                        <h3>九合一低聚肽</h3>
+                        <p>小分子肽+多种营养素，易吸收，增强免疫力</p>
+                        <div class="product-price">
+                            <span class="price">¥398</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品5：养生酒 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/product-yangshengjiu.jpg" alt="汉天医养生酒">
+                        <div class="product-badge">植物提取露酒</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>汉天医养生酒</h3>
+                        <p>精选道地药材，古法酿造，滋补养生，调理气血</p>
+                        <div class="product-price">
+                            <span class="price">¥168</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">关于汉天医</h2>
+                    <p>汉天医秉承"药食同源"的中医理念，致力于将传统中医智慧与现代科技相结合，为现代人提供安全、有效、便捷的健康养生产品。</p>
+                    <p>我们的产品均选用道地药材，经过科学配比和严格质检，确保每一款产品都能为您的健康保驾护航。</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>道地药材</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>科学配比</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>严格质检</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>现代科技</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/brand/brand-main.jpg" alt="汉天医品牌形象">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 医法菁卫 AI -->
+    <section id="yifa" class="yifa">
+        <div class="container">
+            <h2 class="section-title">医法菁卫 AI</h2>
+            <p class="section-subtitle">智能法律助手，守护您的健康权益</p>
+            
+            <div class="yifa-content">
+                <div class="yifa-text">
+                    <h3>AI驱动的医疗法律服务平台</h3>
+                    <p>医法菁卫 AI 是汉天医医学中心推出的智能法律服务平台，专注于医疗健康领域的法律咨询与权益保护。</p>
+                    <p>我们的AI系统整合了海量医疗法规、案例判决书、政策文件，为您提供精准、高效的法律咨询服务。</p>
+                    
+                    <div class="yifa-features">
+                        <div class="yifa-feature">
+                            <i class="fas fa-gavel"></i>
+                            <div>
+                                <h4>医疗纠纷咨询</h4>
+                                <p>AI智能分析医疗纠纷案例，提供专业法律建议和解决方案</p>
+                            </div>
+                        </div>
+                        <div class="yifa-feature">
+                            <i class="fas fa-file-contract"></i>
+                            <div>
+                                <h4>合同审核</h4>
+                                <p>自动审核医疗合同、知情同意书，识别潜在风险条款</p>
+                            </div>
+                        </div>
+                        <div class="yifa-feature">
+                            <i class="fas fa-book"></i>
+                            <div>
+                                <h4>法规查询</h4>
+                                <p>实时更新医疗健康领域法律法规，快速查询相关条款</p>
+                            </div>
+                        </div>
+                        <div class="yifa-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>权益保护</h4>
+                                <p>为患者和医疗机构提供权益保护方案，维护合法权益</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="yifa-cta">
+                        <a href="#contact" class="btn btn-primary">立即咨询</a>
+                        <a href="#" class="btn btn-secondary" onclick="toggleChat()">AI对话测试</a>
+                    </div>
+                </div>
+                
+                <div class="yifa-image">
+                    <img src="images/yifa/yifa-ai.jpg" alt="医法菁卫 AI">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-subtitle">有任何问题，欢迎随时联系我们</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>电话咨询</h3>
+                        <p><a href="tel:15288197613" class="phone-link">15288197613</a></p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>邮箱</h3>
+                        <p>15288197613@163.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>地址</h3>
+                        <p><a href="https://map.baidu.com/poi/%E7%AD%91%E5%8F%8B%C2%B7%E7%BF%B0%E6%9E%97%E5%BA%9C%E7%AC%AC-10%E6%A0%8B/@11426953.735,2862183.88,17.6z?uid=fd29cc33e1f0f4348bb9885b&ugc_type=3&ugc_ver=1&device_ratio=1&compat=1&en_uid=fd29cc33e1f0f4348bb9885b&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl" target="_blank" class="address-link">云南省昆明市西山区马街街道筑友翰林府第10栋</a></p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="您的姓名" required>
+                        <input type="tel" placeholder="联系电话" required>
+                        <textarea placeholder="留言内容" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">提交留言</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>汉天医<sup>®</sup>医学中心</span>
+                </div>
+                <p>&copy; 2026 昆明汉天医药业有限公司 版权所有</p>
+                <p>京ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI对话窗口（豆包智能体嵌入） -->
+    <div id="ai-chat" class="ai-chat">
+        <div class="chat-header">
+            <h3><i class="fas fa-headset"></i> 汉天医AI健康顾问</h3>
+            <button class="btn-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-iframe-container">
+            <!-- 豆包智能体嵌入 -->
+            <iframe 
+                src="https://www.doubao.com/bot/wuEVFwB4"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                allow="microphone"
+                title="汉天医AI健康顾问">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="ai-chat.js"></script>
+    <script src="product-slider.js"></script>
+    <script>
+        // 汉堡菜单切换
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // 点击导航链接后自动关闭菜单
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
