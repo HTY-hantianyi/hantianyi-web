@@ -53,12 +53,29 @@
                 <li><a href="#contact">联系我们</a></li>
             </ul>
             <!-- 汉堡菜单按钮（手机端显示） -->
-            <button class="hamburger" onclick="toggleMenu()">
+            <button class="hamburger" onclick="toggleMenu(); return false;">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <div class="nav-actions">
+                <a href="#" onclick="openAIChat(); return false;" class="btn-chat">
+                    <i class="fas fa-headset"></i> AI顾问
+                </a>
+            </div>
         </div>
+        <script>
+            function toggleMenu() {
+                document.querySelector('.hamburger').classList.toggle('active');
+                document.querySelector('.nav-links').classList.toggle('active');
+            }
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-links') && !e.target.closest('.hamburger')) {
+                    document.querySelector('.hamburger')?.classList.remove('active');
+                    document.querySelector('.nav-links')?.classList.remove('active');
+                }
+            });
+        </script>
     </nav>
 
     <!-- 首页横幅 -->
@@ -70,6 +87,9 @@
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">探索产品</a>
                     <a href="#about" class="btn btn-secondary">了解更多</a>
+                    <a href="#" onclick="openAIChat(); return false;" class="btn btn-ai">
+                        <i class="fas fa-robot"></i> AI健康顾问
+                    </a>
                 </div>
             </div>
         </div>
