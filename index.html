@@ -59,7 +59,7 @@
                 <span></span>
             </button>
             <div class="nav-actions">
-                <a href="#" onclick="openAIChat(); return false;" class="btn-chat">
+                <a href="#" onclick="toggleAIChat(); return false;" class="btn-chat">
                     <i class="fas fa-headset"></i> AI顾问
                 </a>
             </div>
@@ -87,7 +87,7 @@
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">探索产品</a>
                     <a href="#about" class="btn btn-secondary">了解更多</a>
-                    <a href="#" onclick="openAIChat(); return false;" class="btn btn-ai">
+                    <a href="#" onclick="toggleAIChat(); return false;" class="btn btn-ai">
                         <i class="fas fa-robot"></i> AI健康顾问
                     </a>
                 </div>
@@ -334,16 +334,58 @@
     </footer>
 
     <!-- AI悬浮聊天按钮 -->
-    <a href="#" onclick="openAIChat(); return false;" id="ai-float-btn" class="ai-float-btn">
+    <div id="ai-float-btn" class="ai-float-btn" onclick="toggleAIChat()">
         <i class="fas fa-robot"></i>
         <span>AI顾问</span>
-    </a>
+        <div class="ai-badge" id="ai-badge" style="display:none">1</div>
+    </div>
     
-    <script>
-        function openAIChat() {
-            window.open(window.HANTIYI_AI_URL, '_blank', 'width=800,height=700');
-        }
-    </script>
+    <!-- 微信风格AI聊天窗口 -->
+    <div id="ai-chat-window" class="ai-chat-window">
+        <div class="ai-chat-header" onmousedown="startDrag(event)">
+            <div class="ai-chat-header-left">
+                <div class="ai-avatar">🌿</div>
+                <div class="ai-chat-header-info">
+                    <div class="ai-chat-title">汉天医AI健康顾问</div>
+                    <div class="ai-chat-status"><span class="online-dot"></span>在线</div>
+                </div>
+            </div>
+            <div class="ai-chat-header-right">
+                <button class="ai-chat-clear" onclick="clearChatHistory(event)" title="清空对话">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <button class="ai-chat-close" onclick="toggleAIChat()" title="关闭">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-welcome">
+                <div class="ai-welcome-avatar">🌿</div>
+                <div class="ai-welcome-text">您好！我是汉天医AI健康顾问，有什么可以帮您？</div>
+                <div class="ai-quick-tags">
+                    <span onclick="sendQuickMsg('体质辨识')">体质辨识</span>
+                    <span onclick="sendQuickMsg('产品推荐')">产品推荐</span>
+                    <span onclick="sendQuickMsg('睡眠调理')">睡眠调理</span>
+                    <span onclick="sendQuickMsg('药食同源')">药食同源</span>
+                </div>
+            </div>
+        </div>
+        <div class="ai-chat-footer">
+            <div class="ai-input-row">
+                <button class="ai-input-btn" title="语音输入">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <textarea id="aiInput" placeholder="输入消息..." rows="1" onkeydown="handleAIKeydown(event)"></textarea>
+                <button class="ai-input-btn" title="表情">
+                    <i class="far fa-smile"></i>
+                </button>
+                <button class="ai-send-btn" id="aiSendBtn" onclick="sendAIMessage()" title="发送">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- 返回顶部按钮 -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
