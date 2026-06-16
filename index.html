@@ -28,6 +28,14 @@
     <link rel="stylesheet" href="mobile-optimize.css">
     <link rel="stylesheet" href="product-slider.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AI服务配置 - 修改此处链接 -->
+    <script>
+        // AI健康顾问服务地址
+        // 本地测试: http://localhost:8000
+        // 公网访问: https://你的cpolar地址.cpolar.top
+        window.HANTIYI_AI_URL = "https://www.doubao.com/bot/wuEVFwB4"; // 默认使用豆包，部署后替换
+    </script>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -359,10 +367,16 @@
     </div>
 
     <!-- AI悬浮聊天按钮 -->
-    <a href="https://www.doubao.com/bot/wuEVFwB4" target="_blank" id="ai-float-btn" class="ai-float-btn">
+    <a href="#" onclick="openAIChat(); return false;" id="ai-float-btn" class="ai-float-btn">
         <i class="fas fa-robot"></i>
         <span>AI顾问</span>
     </a>
+    
+    <script>
+        function openAIChat() {
+            window.open(window.HANTIYI_AI_URL, '_blank', 'width=800,height=700');
+        }
+    </script>
 
     <!-- 返回顶部按钮 -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
