@@ -1,9 +1,16 @@
 // ============================================
 // 微信风格AI聊天窗口（内嵌版）
 // ============================================
-
+// 
+// ⚠️ 重要：部署前必须更新 API_URL！
+// 当前使用 cpolar 公网地址，免费版地址会变化
+// 启动 cpolar 后，将新地址替换下面的值
+// 
+// 启动命令：cpolar http 8000
+// 获取地址：查看 cpolar 启动输出的 "Forwarding" URL
+//
 const AI_CHAT_CONFIG = {
-    API_URL: window.HANTIYI_AI_URL || 'https://5b2c2cb2.r7.cpolar.cn',
+    API_URL: window.HANTIYI_AI_URL || 'https://5b2c2cb2.r7.cpolar.cn',  // ⚠️ 替换为新的 cpolar 地址
     API_ENDPOINT: '/chat'
 };
 
