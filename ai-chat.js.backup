@@ -1,0 +1,176 @@
+// 切换移动端菜单显示/隐藏
+function toggleMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+}
+
+// 点击导航链接时关闭菜单
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-links');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+});
+
+// AI对话窗口功能
+
+// 切换聊天窗口显示/隐藏
+function toggleChat() {
+    const chatWindow = document.getElementById('ai-chat');
+    chatWindow.classList.toggle('active');
+}
+
+// 处理Enter键发送消息
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+// 发送消息
+function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const messageText = userInput.value.trim();
+    
+    if (messageText === '') {
+        return;
+    }
+    
+    // 添加用户消息到聊天窗口
+    addMessage(messageText, 'user');
+    
+    // 清空输入框
+    userInput.value = '';
+    
+    // 模拟AI回复（这里可以替换为真实的AI API调用）
+    setTimeout(() => {
+        const botResponse = generateBotResponse(messageText);
+        addMessage(botResponse, 'bot');
+    }, 1000);
+}
+
+// 添加消息到聊天窗口
+function addMessage(text, sender) {
+    const messagesContainer = document.getElementById('chat-messages');
+    
+    // 创建消息元素
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+    
+    // 创建消息段落
+    const messageText = document.createElement('p');
+    messageText.textContent = text;
+    messageDiv.appendChild(messageText);
+    
+    // 添加到聊天窗口
+    messagesContainer.appendChild(messageDiv);
+    
+    // 滚动到最新消息
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// 生成AI回复（模拟）
+function generateBotResponse(userMessage) {
+    // 简单的回复逻辑（可以扩展为调用真实的AI API）
+    const responses = {
+        '你好': '您好！很高兴为您服务！请问有什么可以帮您？',
+        '产品': '我们有多种药食同源产品，包括处方茶、磁疗垫、眼盒和特膳食品。请问您对哪款产品感兴趣？',
+        '价格': '我们的产品价格从198元到598元不等，具体可以查看产品中心页面。您有预算要求吗？我可以帮您推荐合适的产品。',
+        '处方茶': '我们的药食同源处方茶精选二十六味药材，科学配比，适合日常调理身体机能。每盒售价298元，非常受欢迎！',
+        '磁疗垫': '穴位磁疗垫采用远红外+磁疗双重功效，能有效缓解疲劳、改善睡眠。很多客户反馈使用后睡眠质量明显提升。售价598元。',
+        '眼盒': '护眼养生眼盒采用中药熏蒸+温热理疗技术，非常适合长期使用电脑、手机的现代人。售价198元，性价比很高！',
+        '特膳食品': '九合一低聚肽是我们的一款特膳食品，小分子肽+多种营养素，易吸收，能增强免疫力。售价398元。',
+        '健康': '健康养生是我们的核心理念。我们的产品均基于"药食同源"的中医理念，安全、有效、便捷。您有什么具体的健康问题吗？',
+        '购买': '您可以通过我们的官网直接购买，或者拨打我们的客服电话400-XXX-XXXX咨询购买。我们也支持微信购买，方便又快捷！',
+        '谢谢': '不客气！很高兴能为您服务。如果还有其他问题，随时可以问我哦！',
+        '再见': '再见！祝您身体健康，生活愉快！欢迎随时回来咨询。'
+    };
+    
+    // 查找匹配的回复
+    for (const key in responses) {
+        if (userMessage.includes(key)) {
+            return responses[key];
+        }
+    }
+    
+    // 默认回复
+    return '感谢您的咨询！我是汉天医AI健康顾问，可以帮您解答产品相关问题、提供健康养生建议。请问您想了解什么？';
+}
+
+// 返回顶部功能
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// 监听滚动事件，显示/隐藏返回顶部按钮
+window.addEventListener('scroll', function() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('汉天医网页已加载完成！');
+    
+    // 可以在这里添加更多的初始化代码
+    // 例如：调用AI API、加载产品数据等
+});
+
+// 如果需要调用真实的AI API（例如OpenAI API），可以使用以下代码：
+/*
+async function callAIAPI(userMessage) {
+    const apiKey = 'YOUR_OPENAI_API_KEY';
+    const apiUrl = 'https://api.openai.com/v1/chat/completions';
+    
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                messages: [
+                    {
+                        role: 'system',
+                        content: '你是汉天医的AI健康顾问，专门解答关于汉天医产品的问题，提供健康养生建议。汉天医的产品包括：处方茶（298元）、磁疗垫（598元）、眼盒（198元）、特膳食品（398元）。'
+                    },
+                    {
+                        role: 'user',
+                        content: userMessage
+                    }
+                ],
+                temperature: 0.7
+            })
+        });
+        
+        const data = await response.json();
+        return data.choices[0].message.content;
+    } catch (error) {
+        console.error('调用AI API失败：', error);
+        return '抱歉，AI服务暂时不可用，请稍后再试或联系人工客服。';
+    }
+}
+
+// 然后在sendMessage函数中使用：
+// const botResponse = await callAIAPI(messageText);
+// 注意：这需要修改sendMessage函数为async函数
+*/

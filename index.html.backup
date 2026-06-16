@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉天医 - 药食同源 · 健康养生</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>汉天医</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#products">产品中心</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-chat" onclick="toggleChat()">
+                    <i class="fas fa-comment-dots"></i> AI健康顾问
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>汉天医 · 药食同源</h1>
+                <p class="subtitle">传承中医智慧，融合现代科技，为您带来健康养生新体验</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">探索产品</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400?text=汉天医+产品展示" alt="汉天医产品">
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品中心 -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">产品中心</h2>
+            <p class="section-subtitle">精选药食同源产品，守护您的健康</p>
+            
+            <div class="product-grid">
+                <!-- 产品1：处方茶 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200?text=处方茶" alt="处方茶">
+                    </div>
+                    <div class="product-info">
+                        <h3>药食同源处方茶</h3>
+                        <p>精选二十六味药材，科学配比，调理身体机能</p>
+                        <div class="product-price">
+                            <span class="price">¥298</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品2：磁疗垫 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200?text=磁疗垫" alt="穴位磁疗垫">
+                    </div>
+                    <div class="product-info">
+                        <h3>穴位磁疗垫</h3>
+                        <p>远红外+磁疗双重功效，缓解疲劳，改善睡眠</p>
+                        <div class="product-price">
+                            <span class="price">¥598</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品3：眼盒 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200?text=眼盒" alt="眼盒">
+                    </div>
+                    <div class="product-info">
+                        <h3>护眼养生眼盒</h3>
+                        <p>中药熏蒸+温热理疗，缓解眼疲劳，保护视力</p>
+                        <div class="product-price">
+                            <span class="price">¥198</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品4：特膳食品 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200?text=特膳食品" alt="特膳食品">
+                    </div>
+                    <div class="product-info">
+                        <h3>九合一低聚肽</h3>
+                        <p>小分子肽+多种营养素，易吸收，增强免疫力</p>
+                        <div class="product-price">
+                            <span class="price">¥398</span>
+                            <button class="btn-buy">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">关于汉天医</h2>
+                    <p>汉天医秉承"药食同源"的中医理念，致力于将传统中医智慧与现代科技相结合，为现代人提供安全、有效、便捷的健康养生产品。</p>
+                    <p>我们的产品均选用道地药材，经过科学配比和严格质检，确保每一款产品都能为您的健康保驾护航。</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>道地药材</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>科学配比</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>严格质检</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>现代科技</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/500x400?text=汉天医+品牌形象" alt="汉天医品牌形象">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-subtitle">有任何问题，欢迎随时联系我们</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>电话咨询</h3>
+                        <p>400-XXX-XXXX</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>邮箱</h3>
+                        <p>contact@hantianyi.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>地址</h3>
+                        <p>北京市朝阳区XXX路XX号</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="您的姓名" required>
+                        <input type="tel" placeholder="联系电话" required>
+                        <textarea placeholder="留言内容" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">提交留言</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>汉天医</span>
+                </div>
+                <p>&copy; 2026 汉天医健康科技有限公司 版权所有</p>
+                <p>京ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI对话窗口 -->
+    <div id="ai-chat" class="ai-chat">
+        <div class="chat-header">
+            <h3><i class="fas fa-robot"></i> AI健康顾问</h3>
+            <button class="btn-close" onclick="toggleChat()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">
+                <p>您好！我是汉天医AI健康顾问，很高兴为您服务！</p>
+                <p>我可以帮您：</p>
+                <ul>
+                    <li>解答产品相关问题</li>
+                    <li>提供健康养生建议</li>
+                    <li>推荐适合您的产品</li>
+                </ul>
+                <p>请问有什么可以帮您？</p>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="请输入您的问题..." onkeypress="handleKeyPress(event)">
+            <button class="btn-send" onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="ai-chat.js"></script>
+</body>
+</html>

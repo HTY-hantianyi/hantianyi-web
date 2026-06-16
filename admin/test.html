@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>娴嬭瘯 Supabase</title>
+</head>
+<body>
+    <h1>Supabase 杩炴帴娴嬭瘯</h1>
+    <pre id="result">姝ｅ湪娴嬭瘯...</pre>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const supabase = window.supabase.createClient(
+            'https://YOUR_SUPABASE_URL.supabase.co',
+            'YOUR_SUPABASE_SERVICE_KEY'
+        );
+        
+        async function test() {
+            const result = document.getElementById('result');
+            
+            try {
+                result.textContent = '姝ｅ湪鏌ヨ products 琛?..';
+                
+                const { data, error } = await supabase.from('products').select('*');
+                
+                if (error) {
+                    result.textContent = '閿欒:\n' + JSON.stringify(error, null, 2);
+                } else {
+                    result.textContent = '鎴愬姛锛佹壘鍒?' + data.length + ' 鏉℃暟鎹?\n\n' + JSON.stringify(data, null, 2);
+                }
+            } catch (e) {
+                result.textContent = '寮傚父: ' + e.message + '\n\n' + e.stack;
+            }
+        }
+        
+        test();
+    </script>
+</body>
+</html>
