@@ -339,13 +339,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // Supabase 初始化
-        const supabase = window.supabase.createClient(
-            'https://homyhvcmnoqpjahegdpq.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXlodmNtbm9xcGphaGVnZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDUwOTUsImV4cCI6MjA5NzAyMTA5NX0.BvksNumB3JKbVHTjDmhX5d0FFC9r3Vpm8fg9TPlvwp8'
-        );
-        
-        // 留言表单提交
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        // 等待 Supabase SDK 加载完成
+        function initSupabase() {
+            if (typeof window.supabase === 'undefined') {
+                setTimeout(initSupabase, 100);
+                return;
+            }
+            
+            const supabase = window.supabase.createClient(
+                'https://homyhvcmnoqpjahegdpq.supabase.co',
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXlodmNtbm9xcGphaGVnZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDUwOTUsImV4cCI6MjA5NzAyMTA5NX0.BvksNumB3JKbVHTjDmhX5d0FFC9r3Vpm8fg9TPlvwp8'
+            );
+            
+            // 留言表单提交
+            document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const name = document.getElementById('contactName').value.trim();
@@ -394,6 +401,10 @@
                 submitBtn.disabled = false;
             }
         });
+        }
+        
+        // 页面加载后初始化
+        initSupabase();
     </script>
     <script>
         // 汉堡菜单切换
