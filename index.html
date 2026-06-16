@@ -416,7 +416,15 @@
 
         // 点击导航链接后自动关闭菜单
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                // 如果是外部链接，允许正常跳转
+                if (link.target === '_blank') {
+                    return; // 让浏览器处理
+                }
+                // 如果是锚点链接，关闭菜单
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
                 document.querySelector('.nav-links').classList.remove('active');
             });
         });
