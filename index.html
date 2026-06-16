@@ -278,12 +278,17 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="您的姓名" required>
-                        <input type="tel" placeholder="联系电话" required>
-                        <textarea placeholder="留言内容" rows="5" required></textarea>
+                    <form id="contactForm">
+                        <input type="text" id="contactName" placeholder="您的姓名" required>
+                        <input type="tel" id="contactPhone" placeholder="联系电话" required>
+                        <textarea id="contactMessage" placeholder="留言内容" rows="5" required></textarea>
                         <button type="submit" class="btn btn-primary">提交留言</button>
                     </form>
+                    <div id="formSuccess" style="display: none; text-align: center; padding: 20px;">
+                        <i class="fas fa-check-circle" style="font-size: 48px; color: #4caf50; margin-bottom: 15px;"></i>
+                        <h3 style="color: #2d5a27;">留言提交成功！</h3>
+                        <p style="color: #666; margin-top: 10px;">我们会尽快联系您，感谢您的关注！</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -331,6 +336,65 @@
 
     <script src="ai-chat.js"></script>
     <script src="product-slider.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase 初始化
+        const supabase = window.supabase.createClient(
+            'https://homyhvcmnoqpjahegdpq.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvbXlodmNtbm9xcGphaGVnZHBxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDUwOTUsImV4cCI6MjA5NzAyMTA5NX0.BvksNumB3JKbVHTjDmhX5d0FFC9r3Vpm8fg9TPlvwp8'
+        );
+        
+        // 留言表单提交
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+            
+            if (!name || !phone || !message) {
+                alert('请填写完整信息');
+                return;
+            }
+            
+            // 显示提交中状态
+            const submitBtn = document.querySelector('#contactForm button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '提交中...';
+            submitBtn.disabled = true;
+            
+            try {
+                const { data, error } = await supabase
+                    .from('contacts')
+                    .insert([{
+                        name: name,
+                        phone: phone,
+                        message: message,
+                        is_read: false
+                    }]);
+                
+                if (error) throw error;
+                
+                // 显示成功提示
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+                
+                // 3秒后恢复表单
+                setTimeout(() => {
+                    document.getElementById('contactForm').reset();
+                    document.getElementById('contactForm').style.display = 'block';
+                    document.getElementById('formSuccess').style.display = 'none';
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+                
+            } catch (err) {
+                alert('提交失败，请稍后重试或直接拨打电话：15288197613');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
     <script>
         // 汉堡菜单切换
         function toggleMenu() {
