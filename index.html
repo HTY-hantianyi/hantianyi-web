@@ -58,11 +58,6 @@
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-actions">
-                <a href="#" onclick="openAIChat(); return false;" class="btn-chat">
-                    <i class="fas fa-headset"></i> AI健康顾问
-                </a>
-            </div>
         </div>
     </nav>
 
@@ -75,33 +70,6 @@
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">探索产品</a>
                     <a href="#about" class="btn btn-secondary">了解更多</a>
-                    <a href="#" onclick="openAIChat(); return false;" class="btn btn-ai">
-                        <i class="fas fa-robot"></i> AI健康顾问
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI健康顾问快捷入口 -->
-    <section id="ai-chat" class="ai-entry">
-        <div class="container">
-            <div class="ai-entry-content">
-                <div class="ai-entry-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="ai-entry-text">
-                    <h2>🌿 AI健康顾问</h2>
-                    <p>药食同源、体质调理、亚健康改善...随时咨询，像朋友一样聊健康</p>
-                    <ul class="ai-entry-features">
-                        <li><i class="fas fa-check"></i> 药食同源养生建议</li>
-                        <li><i class="fas fa-check"></i> 体质辨识与调理</li>
-                        <li><i class="fas fa-check"></i> 症状分析与指导</li>
-                        <li><i class="fas fa-check"></i> 个性化食疗方案</li>
-                    </ul>
-                    <a href="#" onclick="openAIChat(); return false;" class="btn btn-ai-large">
-                        <i class="fas fa-comments"></i> 立即咨询
-                    </a>
                 </div>
             </div>
         </div>
@@ -279,7 +247,7 @@
                     
                     <div class="yifa-cta">
                         <a href="#contact" class="btn btn-primary">立即咨询</a>
-                        <a href="#" class="btn btn-secondary" onclick="toggleChat()">AI对话测试</a>
+
                     </div>
                 </div>
                 
@@ -345,28 +313,7 @@
         </div>
     </footer>
 
-    <!-- AI对话窗口（豆包智能体嵌入） -->
-    <div id="ai-chat" class="ai-chat">
-        <div class="chat-header">
-            <h3><i class="fas fa-headset"></i> 汉天医AI健康顾问</h3>
-            <button class="btn-close" onclick="toggleChat()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="chat-iframe-container">
-            <!-- 豆包智能体嵌入 -->
-            <iframe 
-                src="https://www.doubao.com/bot/wuEVFwB4"
-                width="100%"
-                height="100%"
-                frameborder="0"
-                allow="microphone"
-                title="汉天医AI健康顾问">
-            </iframe>
-        </div>
-    </div>
-
-    <!-- AI悬浮聊天按钮 -->
+    <!-- AI悬浮聊天按钮 →
     <a href="#" onclick="openAIChat(); return false;" id="ai-float-btn" class="ai-float-btn">
         <i class="fas fa-robot"></i>
         <span>AI顾问</span>
@@ -454,28 +401,6 @@
         
         // 页面加载后初始化
         initSupabase();
-    </script>
-    <script>
-        // 汉堡菜单切换
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-
-        // 点击导航链接后自动关闭菜单
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // 如果是外部链接，允许正常跳转
-                if (link.target === '_blank') {
-                    return; // 让浏览器处理
-                }
-                // 如果是锚点链接，关闭菜单
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
     </script>
 </body>
 </html>
