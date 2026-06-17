@@ -352,10 +352,10 @@
             </div>
             <div class="ai-chat-header-right">
                 <button class="ai-chat-clear" onclick="clearChatHistory(event)" title="清空对话">
-                    <i class="fas fa-trash-alt"></i>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                 </button>
                 <button class="ai-chat-close" onclick="toggleAIChat()" title="关闭">
-                    <i class="fas fa-times"></i>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
                 </button>
             </div>
         </div>
@@ -374,14 +374,14 @@
         <div class="ai-chat-footer">
             <div class="ai-input-row">
                 <button class="ai-input-btn" title="语音输入">
-                    <i class="fas fa-microphone"></i>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
                 </button>
                 <textarea id="aiInput" placeholder="输入消息..." rows="1" onkeydown="handleAIKeydown(event)"></textarea>
                 <button class="ai-input-btn" title="表情">
-                    <i class="far fa-smile"></i>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3.5-9c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm7 0c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
                 </button>
                 <button class="ai-send-btn" id="aiSendBtn" onclick="sendAIMessage()" title="发送">
-                    <i class="fas fa-paper-plane"></i>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                 </button>
             </div>
         </div>
@@ -389,7 +389,7 @@
 
     <!-- 返回顶部按钮 -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
     </button>
 
     <script src="ai-chat.js?v=2"></script>
