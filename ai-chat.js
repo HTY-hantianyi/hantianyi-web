@@ -10,7 +10,7 @@
 // 获取地址：查看 cpolar 启动输出的 "Forwarding" URL
 //
 const AI_CHAT_CONFIG = {
-    API_URL: window.HANTIYI_AI_URL || 'https://5b2c2cb2.r7.cpolar.cn',  // ⚠️ 替换为新的 cpolar 地址
+    API_URL: window.HANTIYI_AI_URL || 'http://129.211.0.117',  // 云服务器地址
     API_ENDPOINT: '/chat'
 };
 
